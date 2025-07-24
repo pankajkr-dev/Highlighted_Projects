@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medicine Reminder</title>
+</head>
+<body>
+  <h2>💊 Medicine Reminder</h2>
+  <p id="reminder">Waiting for location and time...</p>
+
+  <script>
+    const pillHour = 20; // 8 PM
+    const homeCoords = { lat: 26.9124, lon: 75.7873 }; // Jaipur
+
+    function isAtHome(lat, lon) {
+      return Math.abs(lat - homeCoords.lat) < 0.01 && Math.abs(lon - homeCoords.lon) < 0.01;
+    }
+
+    function checkReminder() {
+      const now = new Date();
+      if (now.getHours() === pillHour) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          const { latitude, longitude } = pos.coords;
+          if (isAtHome(latitude, longitude)) {
+            document.getElementById("reminder").innerText = "Time to take your medicine!";
+            alert("💊 Reminder: Take your medicine!");
+          }
+        });
+      }
+    }
+
+    setInterval(checkReminder, 60000); // check every minute
+  </script>
+</body>
+</html>

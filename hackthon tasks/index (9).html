@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logout Reminder</title>
+</head>
+<body>
+  <h2>🕕 Office Logout Reminder</h2>
+  <p id="status">Monitoring time...</p>
+
+  <script>
+    function checkLogout() {
+      const now = new Date();
+      if (now.getHours() >= 18) {
+        alert("⚠️ Reminder: You forgot to log out of the office system!");
+        document.getElementById("status").innerText = "Logout reminder sent!";
+      }
+    }
+
+    setInterval(checkLogout, 60000);
+  </script>
+</body>
+</html>

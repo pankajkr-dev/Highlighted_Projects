@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Battery Monitor</title>
+</head>
+<body>
+  <h2>🔋 Battery Monitor</h2>
+  <p id="status">Checking battery...</p>
+
+  <script>
+    navigator.getBattery().then(battery => {
+      function checkBattery() {
+        const level = battery.level * 100;
+        document.getElementById("status").innerText = `Battery: ${level}%`;
+        if (level < 5) {
+          alert("Battery low! Auto-calling family...");
+          // Simulate call
+          window.location.href = "tel:+918002524376";
+        }
+      }
+      battery.addEventListener("levelchange", checkBattery);
+      checkBattery();
+    });
+  </script>
+</body>
+</html>

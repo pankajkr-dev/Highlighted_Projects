@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📸 Webcam Photo Capture</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      height: 585px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      /* -webkit-backdrop-filter: blur(10px); */
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding-left: 20px;
+      padding-right: 20px;
+      width: 380px;
+      height: 560px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    video, canvas {
+      width: 245px;
+      height: 185px;
+      border-radius: 12px;
+      border: 2px solid #fff;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: linear-gradient(145deg, #89f7fe, #66a6ff);
+      color: #333;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(145deg, #66a6ff, #89f7fe);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 400px) {
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+
+      video, canvas {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📸 Webcam Photo Capture</h2>
+    <video id="video" autoplay playsinline></video><br>
+    <button onclick="capturePhoto()">Capture Photo</button><br><br>
+    <canvas id="canvas" width="320" height="240"></canvas>
+  </div>
+
+  <script>
+    async function startWebcam() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        document.getElementById('video').srcObject = stream;
+      } catch (err) {
+        console.error("Error accessing webcam: ", err);
+        alert("Webcam access denied or not supported.");
+      }
+    }
+
+    function capturePhoto() {
+      const video = document.getElementById('video');
+      const canvas = document.getElementById('canvas');
+      const context = canvas.getContext('2d');
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    }
+
+    window.addEventListener('DOMContentLoaded', startWebcam);
+  </script>
+</body>
+</html>

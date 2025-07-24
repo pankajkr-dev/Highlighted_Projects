@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Alarm Snooze Watcher</title>
+</head>
+<body>
+  <h2>⏰ Alarm Snooze Monitor</h2>
+  <button onclick="snooze()">Snooze Alarm</button>
+  <p id="snoozeCount">Snoozes: 0</p>
+
+  <script>
+    let snoozes = 0;
+    function snooze() {
+      snoozes++;
+      document.getElementById("snoozeCount").innerText = `Snoozes: ${snoozes}`;
+      if (snoozes >= 2) {
+        alert("Calling friend to wake you up!");
+        window.location.href = "tel:+918002524376";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wi-Fi Arrival Notifier</title>
+</head>
+<body>
+  <h2>📶 College Wi-Fi Detector</h2>
+  <p id="wifi">Checking network...</p>
+
+  <script>
+    async function checkWiFi() {
+      const connection = navigator.connection || navigator.webkitConnection;
+      if (connection && connection.type === "wifi") {
+        document.getElementById("wifi").innerText = "Connected to Wi-Fi";
+        alert("📩 Message sent to parents: 'Reached college safely!'");
+      } else {
+        document.getElementById("wifi").innerText = "Not on Wi-Fi";
+      }
+    }
+
+    setInterval(checkWiFi, 10000);
+  </script>
+</body>
+</html>

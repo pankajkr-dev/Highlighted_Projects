@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Expense Tracker</title>
+</head>
+<body>
+  <h2>💸 SMS Expense Tracker</h2>
+  <textarea id="sms" rows="6" cols="50" placeholder="Paste your SMS alerts here..."></textarea>
+  <button onclick="extractExpenses()">Track Expenses</button>
+  <p id="total"></p>
+
+  <script>
+    function extractExpenses() {
+      const text = document.getElementById("sms").value;
+      const matches = text.match(/INR\s?[\d,]+(\.\d{2})?/gi) || [];
+      const total = matches.reduce((sum, amt) => {
+        const num = parseFloat(amt.replace(/INR|,/gi, ''));
+        return sum + (isNaN(num) ? 0 : num);
+      }, 0);
+      document.getElementById("total").innerText = `Total Spent: ₹${total.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Interactive Web App</title>
+</head>
+<body>
+
+  <!-- Prompt and Alert -->
+  <script>
+    const name = prompt("What's your name?");
+    alert("Hello, " + name + "!");
+  </script>
+
+  <!-- Change Paragraph Text -->
+  <p id="message">This will change...</p>
+  <script>
+    document.getElementById("message").innerText = "JavaScript is Awesome!";
+  </script>
+
+  <!-- Input and Button -->
+  <input type="text" id="userInput" placeholder="Type something">
+  <button id="showBtn">Show</button>
+
+  <!-- Output Div -->
+  <div id="output"></div>
+
+  <script>
+    document.getElementById("showBtn").addEventListener("click", function() {
+      const input = document.getElementById("userInput").value;
+      document.getElementById("output").innerText = "You typed: " + input;
+    });
+  </script>
+
+</body>
+</html>

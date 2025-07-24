@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Input Display</title>
+</head>
+<body>
+
+  <input type="text" id="userInput" placeholder="Enter something">
+  <button id="showBtn">Show</button>
+
+  <div id="output"></div>
+
+  <script>
+    document.getElementById("showBtn").addEventListener("click", function() {
+      const input = document.getElementById("userInput").value;
+      document.getElementById("output").innerText = "You typed: " + input;
+    });
+  </script>
+
+</body>
+</html>

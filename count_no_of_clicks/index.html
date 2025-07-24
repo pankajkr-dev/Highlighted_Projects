@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click Counter</title>
+</head>
+<body>
+  <img id="myImage" src="sleeping-minion-dream-5k-5120x2880-18735.jpg" height="500px" width="700" alt="Clickable Image" style="cursor:pointer;" />
+  <p>Click count: <span id="clickCount">0</span></p>
+
+  <script>
+    let count = 0;
+    const image = document.getElementById('myImage');
+    const display = document.getElementById('clickCount');
+
+    image.addEventListener('click', () => {
+      count++;
+      display.textContent = count;
+    });
+  </script>
+</body>
+</html>
+
+<!-- This code creates a simple web page with an image that counts clicks. -->
+<!-- The image is clickable, and each click increments the count displayed below it. -->
+ <h1></h1>
+
